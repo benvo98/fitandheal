@@ -1,16 +1,13 @@
-import 'package:fitandheal/App/Screen/QuickHitScreen.dart';
-import 'package:fitandheal/App/Screen/StartEx2.dart';
+import 'package:fitandheal/App/Screen/StartworkScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:fitandheal/app/style/theme.dart' as Style;
 import 'dart:math' as math;
 
-class StartWorkScreen extends StatefulWidget {
+class StartEx2 extends StatefulWidget {
   @override
-  _StartWorkScreenState createState() => _StartWorkScreenState();
+  _StartEx2State createState() => _StartEx2State();
 }
 
-class _StartWorkScreenState extends State<StartWorkScreen>
-    with TickerProviderStateMixin {
+class _StartEx2State extends State<StartEx2> with TickerProviderStateMixin {
   AnimationController controller;
 
   String get timerString {
@@ -25,6 +22,14 @@ class _StartWorkScreenState extends State<StartWorkScreen>
       vsync: this,
       duration: Duration(seconds: 20),
     );
+
+    // ..addStatusListener((status) {
+    //     if (controller.status == AnimationStatus.dismissed) {
+    //       setState(() => isPlaying = false);
+    //     }
+
+    //     print(status);
+    //   })
   }
 
   void call() {
@@ -32,9 +37,9 @@ class _StartWorkScreenState extends State<StartWorkScreen>
   }
 
   method() {
-    Future.delayed(Duration(seconds: 30), () {
+    Future.delayed(Duration(seconds: 20), () {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => StartEx2()));
+          context, MaterialPageRoute(builder: (context) => StartWorkScreen()));
     });
   }
 
@@ -47,24 +52,21 @@ class _StartWorkScreenState extends State<StartWorkScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.only(top: 10, left: 330),
-                  child: IconButton(
-                      icon: Icon(Icons.arrow_forward),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => StartEx2()));
-                      }),
-                ),
-              ],
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              alignment: Alignment.topLeft,
+              child: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => StartWorkScreen()));
+                  }),
             ),
             Container(
                 child: Text(
-              'Bài tập 1',
+              'Bài tập 2',
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             )),
             Container(
@@ -72,7 +74,7 @@ class _StartWorkScreenState extends State<StartWorkScreen>
               height: 300,
               margin: EdgeInsets.only(top: 100),
               child: Image.network(
-                  'https://media.giphy.com/media/lV8qOjvvvrKZa/giphy.gif'),
+                  'https://media3.giphy.com/media/hqCWj0ebspgru/giphy.gif?cid=ecf05e47f478769f87eb8a80541d6bcc944bd319e6c66079&rid=giphy.gif'),
             ),
             Container(
               child: AnimatedBuilder(

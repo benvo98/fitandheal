@@ -8,8 +8,15 @@ class ExcercisesItem extends StatelessWidget {
   final String text;
   final Color colors;
   final Color colors2;
+  final double witdhs;
+
   ExcercisesItem(
-      {this.imageUrl, this.title, this.text, this.colors, this.colors2});
+      {this.imageUrl,
+      this.title,
+      this.text,
+      this.colors,
+      this.colors2,
+      this.witdhs});
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +70,7 @@ class ExcercisesItem extends StatelessWidget {
                             height: 12,
                           ),
                           Container(
-                            width: 45,
+                            width: witdhs,
                             height: 12,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(60),

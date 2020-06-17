@@ -6,6 +6,12 @@ class Round1 extends StatefulWidget {
 }
 
 class _Round1State extends State<Round1> {
+  final String title;
+  final String excer;
+  final String per;
+  final double widths;
+  _Round1State({this.title, this.excer, this.per, this.widths});
+
   int _index = 0;
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,7 @@ class _Round1State extends State<Round1> {
             Row(
               children: <Widget>[
                 Text(
-                  'Round 1 completed',
+                  title,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
@@ -25,7 +31,7 @@ class _Round1State extends State<Round1> {
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
-                    '(4 Excercises)',
+                    excer,
                     style: TextStyle(
                         fontSize: 12, color: Colors.black.withOpacity(0.4)),
                   ),
@@ -33,7 +39,7 @@ class _Round1State extends State<Round1> {
                 Padding(
                   padding: const EdgeInsets.only(left: 68.0),
                   child: Text(
-                    '60%',
+                    per,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
@@ -54,7 +60,7 @@ class _Round1State extends State<Round1> {
                     height: 17,
                   ),
                   Container(
-                    width: 199,
+                    width: widths,
                     height: 17,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(60),

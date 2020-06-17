@@ -1,6 +1,5 @@
 import 'package:fitandheal/App/Screen/ExcercisesScreen.dart';
-import 'package:fitandheal/App/Widgets/Workout_item.dart';
-import 'package:fitandheal/App/model/Workout_model.dart';
+import 'package:fitandheal/App/Widgets/WorkoutItem.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutScreen extends StatefulWidget {
@@ -14,7 +13,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(left: 40, top: 79),
+          margin: EdgeInsets.only(left: 40, top: 79, right: 40),
           child: Column(
             children: <Widget>[
               Row(
@@ -22,7 +21,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                   Container(
                     margin: EdgeInsets.only(bottom: 20),
                     alignment: Alignment.topCenter,
-                    child: Text('Workouts',
+                    child: Text('Bài tập phổ biến',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 25,
@@ -30,23 +29,14 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                   ),
                 ],
               ),
-              Container(
-                width: 500,
-                height: 650,
-                child: SingleChildScrollView(
-                  child: Wrap(
-                    children: List.generate(listWorkout.length, (index) {
-                      return Container(
-                        width: double.infinity,
-                        height: 250,
-                        child: Workout_item(
-                          title: listWorkout[index].title,
-                          imgUrl1: listWorkout[index].imageUrl1,
-                          imgUrl2: listWorkout[index].imageUrl2,
-                        ),
-                      );
-                    }),
-                  ),
+              GestureDetector(
+                onTap: onClicked,
+                child: Container(
+                  height: 600,
+                  child: Container(
+                      width: double.infinity,
+                      height: 200,
+                      child: WorkoutItem()),
                 ),
               ),
             ],

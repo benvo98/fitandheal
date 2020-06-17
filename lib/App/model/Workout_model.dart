@@ -6,7 +6,7 @@ class ListWorkout {
   ListWorkout({this.title, this.imageUrl1, this.imageUrl2});
 }
 
-final List<ListWorkout> listWorkout = [
+List<ListWorkout> listWorkout = [
   ListWorkout(
       title: 'Workout 1', imageUrl1: 'Sub3.png', imageUrl2: 'Workout1.png'),
   ListWorkout(

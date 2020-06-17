@@ -1,9 +1,11 @@
 import 'package:fitandheal/App/Screen/StartworkScreen.dart';
+
 import 'package:fitandheal/App/Widgets/RoundItem/Round1_item.dart';
 import 'package:fitandheal/App/Widgets/RoundItem/Round2_item.dart';
 import 'package:fitandheal/app/style/theme.dart' as Style;
 
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class QuickHitScreen extends StatefulWidget {
   @override
@@ -22,12 +24,27 @@ class _QuickHitScreenState extends State<QuickHitScreen> {
     '5 Excercises',
   ];
 
-  final List<String> widths = [
-    '199',
-    '253',
-    '150',
+  final List<double> widths = [
+    150,
+    200,
+    300,
   ];
+
+  final List<String> percent = ['40%', '60%', '93%'];
+
   int _index = 0;
+  String videoURL = "https://www.youtube.com/watch?v=2MZSjB1WLFg";
+
+  YoutubePlayerController _controller;
+
+  @override
+  void initState() {
+    _controller = YoutubePlayerController(
+        initialVideoId: YoutubePlayer.convertUrlToId(videoURL));
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +62,7 @@ class _QuickHitScreenState extends State<QuickHitScreen> {
                 ),
               ],
             ),
-            Row(
+            /*Row(
               children: <Widget>[
                 Stack(
                   children: <Widget>[
@@ -65,13 +82,29 @@ class _QuickHitScreenState extends State<QuickHitScreen> {
                   ],
                 ),
               ],
+            ),*/
+            Container(
+              margin: EdgeInsets.all(10),
+              width: 360,
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(32)),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    YoutubePlayer(
+                      controller: _controller,
+                      showVideoProgressIndicator: true,
+                    ),
+                  ],
+                ),
+              ),
             ),
             Row(
               children: <Widget>[
                 Stack(
                   children: <Widget>[
                     Container(
-                      width: 325,
+                      width: 360,
                       height: 50,
                       margin: EdgeInsets.only(top: 23, left: 25),
                       child: RaisedButton(
@@ -88,7 +121,7 @@ class _QuickHitScreenState extends State<QuickHitScreen> {
                     Container(
                       width: 42,
                       height: 42,
-                      margin: EdgeInsets.only(top: 27, left: 305),
+                      margin: EdgeInsets.only(top: 27, left: 340),
                       child: Image.asset('PlayBtn.png'),
                     )
                   ],
@@ -100,7 +133,7 @@ class _QuickHitScreenState extends State<QuickHitScreen> {
               child: Row(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(right: 71.0),
+                    padding: const EdgeInsets.only(right: 80.0),
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
@@ -125,7 +158,7 @@ class _QuickHitScreenState extends State<QuickHitScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 68.0),
+                    padding: const EdgeInsets.only(right: 80),
                     child: GestureDetector(
                       onTap: () {
                         setState(() {
@@ -186,9 +219,9 @@ class _QuickHitScreenState extends State<QuickHitScreen> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 68.0),
+                        padding: const EdgeInsets.only(left: 100.0),
                         child: Text(
-                          '60%',
+                          percent[_index],
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
@@ -205,11 +238,11 @@ class _QuickHitScreenState extends State<QuickHitScreen> {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(60),
                               color: Color(0xffECECEC)),
-                          width: 324,
+                          width: 400,
                           height: 17,
                         ),
                         Container(
-                          width: 199,
+                          width: widths[_index],
                           height: 17,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(60),

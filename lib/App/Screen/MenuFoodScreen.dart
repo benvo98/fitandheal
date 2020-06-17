@@ -18,7 +18,7 @@ class _MenuFoodScreenState extends State<MenuFoodScreen> {
               alignment: Alignment.topLeft,
               margin: EdgeInsets.only(top: 79, left: 25),
               child: Text(
-                'Diet & Nutrition',
+                'Chế độ ăn uống & Dinh dưỡng',
                 style: TextStyle(fontSize: 30),
               ),
             ),
@@ -75,7 +75,7 @@ class _MenuFoodScreenState extends State<MenuFoodScreen> {
                             Container(
                               margin: EdgeInsets.only(top: 18),
                               child: Text(
-                                'Meal 1',
+                                'Bữa ăn 1',
                                 style: TextStyle(fontSize: 16),
                               ),
                             ),
@@ -84,7 +84,7 @@ class _MenuFoodScreenState extends State<MenuFoodScreen> {
                               height: 38,
                               margin: EdgeInsets.only(top: 18),
                               child: Text(
-                                'Grilled lemonchicken',
+                                'Gà nướng lá chanh',
                                 style: TextStyle(fontSize: 14),
                               ),
                             ),

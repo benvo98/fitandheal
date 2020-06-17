@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class DetailFoodScreen extends StatefulWidget {
   @override
@@ -6,6 +7,20 @@ class DetailFoodScreen extends StatefulWidget {
 }
 
 class _DetailFoodScreenState extends State<DetailFoodScreen> {
+  int _index = 0;
+
+  String videoURL = "https://www.youtube.com/watch?v=QLtoyXbRquM";
+
+  YoutubePlayerController _controller;
+
+  @override
+  void initState() {
+    _controller = YoutubePlayerController(
+        initialVideoId: YoutubePlayer.convertUrlToId(videoURL));
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,26 +33,27 @@ class _DetailFoodScreenState extends State<DetailFoodScreen> {
                 children: <Widget>[
                   Container(
                     child: Text(
-                      'Meal 1',
+                      'Bữa ăn 1',
                       style: TextStyle(fontSize: 30),
                     ),
                   ),
                 ],
               ),
-              Row(
-                children: <Widget>[
-                  Stack(
+              Container(
+                margin: EdgeInsets.only(right: 40, top: 10),
+                width: 360,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(32)),
+                child: SingleChildScrollView(
+                  child: Column(
                     children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.only(top: 27),
-                        child: Image.asset('foodimg.png'),
+                      YoutubePlayer(
+                        controller: _controller,
+                        showVideoProgressIndicator: true,
                       ),
-                      Container(
-                          margin: EdgeInsets.only(top: 100, left: 135),
-                          child: Image.asset('PlayBtn.png'))
                     ],
                   ),
-                ],
+                ),
               ),
               Row(
                 children: <Widget>[
@@ -113,12 +129,13 @@ class _DetailFoodScreenState extends State<DetailFoodScreen> {
                 ),
               ),
               Container(
+                height: 200,
                 margin: EdgeInsets.only(top: 20),
                 child: Row(
                   children: <Widget>[
                     Container(
                       width: 271,
-                      height: 150,
+                      height: 200,
                       child: SingleChildScrollView(
                         child: Text(
                             'Gà nướng chanh ớt thơm lừng. Món ăn có vị chua, cay, mùi thơm quyến rũ và màu vàng nâu hấp dẫn sẽ khiến các thành viên gia đình bạn khó cưỡng lại. Nguyên liệu: 1,5-2 kg thịt gà (nguyên phần đùi, cả xương), 1/4 chén dầu olive, 2 quả chanh tươi, 3 tép tỏi nghiền nát, 1/2 thìa ớt bột, 2 thìa ớt khô miếng, muối và tiêu.'),
@@ -148,11 +165,23 @@ class _DetailFoodScreenState extends State<DetailFoodScreen> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(33),
                           color: Colors.white.withOpacity(.2)),
-                      child: Image.asset('heart.png'),
+                      child: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            _index = 0;
+                          });
+                        },
+                        icon: Icon(
+                          Icons.favorite,
+                          color: _index == 0 ? Colors.white : Colors.red,
+                        ),
+                      ),
                     ),
                     Container(
                       margin: EdgeInsets.only(left: 70),
-                      child: Image.asset('bookmark.png'),
+                      child: Image.asset(
+                        'bookmark.png',
+                      ),
                     )
                   ],
                 ),

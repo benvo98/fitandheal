@@ -1,3 +1,4 @@
+import 'package:fitandheal/App/Screen/QuickHitScreen.dart';
 import 'package:fitandheal/App/model/Excercises_model.dart';
 import 'package:flutter/material.dart';
 import 'package:fitandheal/App/Widgets/Excercises_item.dart';
@@ -43,12 +44,16 @@ class _EcxerciseScreenState extends State<EcxerciseScreen> {
                     return Container(
                       width: double.infinity,
                       height: 150,
-                      child: ExcercisesItem(
-                        imageUrl: excercisesItem[index].imageUrl,
-                        title: excercisesItem[index].title,
-                        text: excercisesItem[index].text,
-                        colors: excercisesItem[index].colors,
-                        colors2: excercisesItem[index].colors2,
+                      child: GestureDetector(
+                        onTap: onClicked1,
+                        child: ExcercisesItem(
+                          imageUrl: excercisesItem[index].imageUrl,
+                          title: excercisesItem[index].title,
+                          text: excercisesItem[index].text,
+                          colors: excercisesItem[index].colors,
+                          colors2: excercisesItem[index].colors2,
+                          witdhs: excercisesItem[index].witdhs,
+                        ),
                       ),
                     );
                   }),
@@ -76,5 +81,8 @@ class _EcxerciseScreenState extends State<EcxerciseScreen> {
     );
   }
 
-  void onClicked1() {}
+  void onClicked1() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => QuickHitScreen()));
+  }
 }
