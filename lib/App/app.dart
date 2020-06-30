@@ -1,18 +1,19 @@
-import 'package:fitandheal/App/Screen/BeginScreen.dart';
-import 'package:fitandheal/App/Screen/test.dart';
-import 'package:fitandheal/App/Widgets/ApiItem/ExcercisesItem1.dart';
-import 'package:fitandheal/App/Widgets/Excercises_item.dart';
+import 'package:fitandheal/App/src/blocs/auth_bloc.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends InheritedWidget {
+  final AuthBloc authBloc;
+  final Widget child;
+  MyApp(this.authBloc, this.child) : super(child: child);
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BeginScreen(),
-    );
+  bool updateShouldNotify(InheritedWidget oldWidget) {
+    return false;
+  }
+
+  static MyApp of(BuildContext context) {
+    return context.inheritFromWidgetOfExactType(MyApp);
   }
 }
